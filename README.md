@@ -80,10 +80,11 @@ pipeLine 과 jenkins , gitWebhook 을 설정해서 하는 작업들은 재미있
 
 나중에 컴포즈 파일 찾기 귀찮을때 참고해야겠다.
 
-# 파일 규격 버전
+# redis/conf/redis.conf 
+파일 규격 버전
 version: "3.1"
 
-# 실행하려는 컨테이너들 정의
+실행하려는 컨테이너들 정의
 services:
   web: 
     container_name: denb_boot
@@ -106,37 +107,37 @@ networks: # 가장 기본적인 bridge 네트워크
 
 엔진엑스 , 레디스를 도커 이미지로 개발서버에 띄워져 있었는데 , 도커로 img를 띄워놓고 포트만 설정해놓은 가장 기본세팅인것 같았다. 추후에 Spring boot 에도 redis를 적용시킬거니까 나중에 참고해야겠음!
 
-redis/conf/redis.conf 
 
-# 어떤 네트위크 인터페이스로부터 연결할 수 있도록 할 것인지 관리 (여기에서는 Anywhere)
+
+ 어떤 네트위크 인터페이스로부터 연결할 수 있도록 할 것인지 관리 (여기에서는 Anywhere)
 bind 0.0.0.0
 
-# 사용 포트 관리
+사용 포트 관리
 port 6379
 
-# Master 노드의 기본 사용자(default user)의 비밀번호 설정
+Master 노드의 기본 사용자(default user)의 비밀번호 설정
 requirepass seed2804
 
-# Redis 에서 사용할 수 있는 최대 메모리 용량. 지정하지 않으면 시스템 전체 용량
+Redis 에서 사용할 수 있는 최대 메모리 용량. 지정하지 않으면 시스템 전체 용량
 maxmemory 2gb
 
-# maxmemory 에 설정된 용량을 초과했을때 삭제할 데이터 선정 방식
-# - noeviction : 쓰기 동작에 대해 error 반환 (Default)
-# - volatile-lru : expire 가 설정된 key 들중에서 LRU algorithm 에 의해서 선택된 key 제거
-# - allkeys-lru : 모든 key 들 중 LRU algorithm에 의해서 선택된 key 제거
-# - volatile-random : expire 가 설정된 key 들 중 임의의 key 제거
-# - allkeys-random : 모든 key 들 중 임의의 key 제거
-# - volatile-ttl : expire time(TTL)이 가장 적게 남은 key 제거 (minor TTL)
+ maxmemory 에 설정된 용량을 초과했을때 삭제할 데이터 선정 방식
+ - noeviction : 쓰기 동작에 대해 error 반환 (Default)
+ - volatile-lru : expire 가 설정된 key 들중에서 LRU algorithm 에 의해서 선택된 key 제거
+ - allkeys-lru : 모든 key 들 중 LRU algorithm에 의해서 선택된 key 제거
+ - volatile-random : expire 가 설정된 key 들 중 임의의 key 제거
+ - allkeys-random : 모든 key 들 중 임의의 key 제거
+ - volatile-ttl : expire time(TTL)이 가장 적게 남은 key 제거 (minor TTL)
 maxmemory-policy volatile-ttl
 
-# DB 데이터를 주기적으로 파일로 백업하기 위한 설정입니다.
-# Redis 가 재시작되면 이 백업을 통해 DB 를 복구합니다.
+ DB 데이터를 주기적으로 파일로 백업하기 위한 설정입니다.
+ Redis 가 재시작되면 이 백업을 통해 DB 를 복구합니다.
 
-# 15분 안에 최소 1개 이상의 key 가 변경 되었을 때
+ 15분 안에 최소 1개 이상의 key 가 변경 되었을 때
 save 900 1
-# 5분 안에 최소 10개 이상의 key 가 변경 되었을 때
+ 5분 안에 최소 10개 이상의 key 가 변경 되었을 때
 save 300 10
-# 60초 안에 최소 10000 개 이상의 key 가 변경 되었을 때
+ 60초 안에 최소 10000 개 이상의 key 가 변경 되었을 때
 save 60 10000
 
 
