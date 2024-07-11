@@ -1,0 +1,37 @@
+Java 로 웹개발을 쌍용교육센터에서 접해보았더니 , 나는 view 템플릿은 jsp , html 만 있는줄 알고 1년을 보냈다.
+그러다 Spring boot , Thymeleaf , 기반의 한양수자인 구축 프로젝트를 담당할떄  왜 Thymeleaf 를 사용하는지 몰랐고 왜 jar 배포를 하는지에 대해서 잘 몰랐었다.
+
+Jsp 는 ava Server Page 약자로는 알고있었다.
+
+하지만 최근에 스프링부트로 많이 넘어오면서 Thymeleaf에 대해 공부하게 되었다.
+
+Thymeleaf은 Spring Framework(특히 Spring MVC)에 통합시킬 수 있는 뷰 엔진이다.
+
+
+
+Thymeleaf는 웹뿐만 아니라 다른 환경을 위한 최신의 서버-사이드 자바 Template Engine이며, HTML, CSS, XM, JS 및 Text까지 수용(이는 다른 템플릿 엔진과 동일)한다.
+
+타임리프의 주 목표는 유지관리가 쉬운 템플릿 생성 방법을 제공하는 것이며,
+
+실제로 템플릿에 영향을 주지 않는(HTML의 구조를 깨지 않는, 기존 HTML 코드를 변경하지 않고 덧붙이는 코드) 방식을 사용한다. 
+
+즉, Natural Templates 개념을 기반으로 한다. 이를 통해 디자인 팀과 개발 팀간 갈등, 격차 해소가 기대된다.
+
+
+# Natural Templates   ? 
+
+Natural Templates 이 뭔지 몰라서 찾아보니까 ,   정적인 HTML 을 동적인 HTML으로 변환하는데 필요한 노력을 줄일수 있다. 이를 수행하는 기능이   Natural Templates 이라고 한다. 사실 100% 이해가 된거같진 않다.
+
+prefix 설정은 프로퍼티 파일경로나  어플리케이션 클래스에 선언해주면 된다.
+        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setSuffix(".html");  
+
+이건 jsp 프로젝트에서  Thymeleaf 로 변경하고  404에러가 계속 발생하다보니 알게 되었다................................
+
+
+html의 속성에서 th , 타임리프 문법을 사용하려면 
+# <html xmlns:th="http://www.thymeleaf.org">  nameSpace를 추가해주면 된다.
+
+Thymeleaf 와 jsp 에 대해서 조금 더 찾아보니  정적 그리고 동적에 대한 궁금증이 생겼다. 
+
+머리로는 정적과 동적 에대해 어느정도는 알고 있었으나 정확한 개념에대해  이해하고 넘어가고싶었다.
